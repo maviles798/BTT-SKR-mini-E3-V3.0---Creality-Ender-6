@@ -35,5 +35,27 @@ horizontal_move_z: 10.
 speed: 50.
 screw_thread: CW-M3
 
-The readjust the z offset
+Then readjust the z offset
+
+### Pid calibrate.
+Calibrate your extruder and your bed the command is 
+PID_CALIBRATE HEATER=extruder TARGET=170
+PID_CALIBRATE HEATER=heater_bed TARGET=60
+
+These are the defailt values, but use what younormally use, in my case 220 on the extruder beacuse i like high speed printing
+
+### Calibrate extruder
+[https://www.klipper3d.org/Rotation_Distance.html]
+### Resonance test
+These will help improve print quality at high speeds, you need an axxelerometer [https://www.klipper3d.org/Measuring_Resonances.html]
+
+### Preasure Advance
+
+### Prusa Slicer
+Under Printer>custom Gcode> dissable Emit temperature commands
+and add these line
+`start_print EXTRUDER_TEMP={first_layer_temperature[initial_extruder]} BED_TEMP={first_layer_bed_temperature[initial_extruder]};`
+in start print
+and 
+`enr_print` in the end print section.
 
